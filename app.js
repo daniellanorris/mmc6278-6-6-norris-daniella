@@ -1,11 +1,11 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
 const apiRoutes = require('./routes/api-routes');
 
 const htmlRoutes = require('./routes/html-routes');
 
 const app = express();
 // TODO: Require Exphbs
+const exphbs = require('express-handlebars')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -4,29 +4,27 @@ const path = require('path')
 
 router.get('/', async (req, res) => {
   const [rows] = await db.query('SELECT * FROM inventory;')
-  const [[{cartCount}]] = await db.query('SELECT SUM(quantity) AS cartCount FROM cart;')
+  const [[{ cartCount }]] = await db.query('SELECT SUM(quantity) AS cartCount FROM cart;')
 
   // TODO: Convert the response below to render a handlebars template
-//   res.sendFile(path.join(__dirname, '../views/index.html'))
+  //   res.sendFile(path.join(__dirname, '../views/index.html'))
 
-//(index.html, '../views/pieces/index.handlebars')
-app.get('/', (req, res) => {
-  res.render('../views/index')
+  res.render('index', {title: 'home'})
+
 })
- })
 
 router.get('/product/:id', async (req, res) => {
   const [[product]] = await db.query(
     'SELECT * FROM inventory WHERE id=?;',
     [req.params.id]
   )
-  const [[{cartCount}]] = await db.query('SELECT SUM(quantity) AS cartCount FROM cart;')
+  const [[{ cartCount }]] = await db.query('SELECT SUM(quantity) AS cartCount FROM cart;')
 
   // TODO: Convert the response below to render a handlebars template
   //res.sendFile(path.join(__dirname, '../views/product.html'))
-  app.get('/product/:id', (req,res) => {
-    res.render('../views/about')
-  } )
+
+  res.render('product', {title: 'About'})
+
 })
 
 router.get('/cart', async (req, res) => {
@@ -49,7 +47,11 @@ router.get('/cart', async (req, res) => {
     .toFixed(2)
 
   // TODO: Convert the response below to render a handlebars template
-  res.sendFile(path.join(__dirname, '../views/cart.html'))
+  // res.sendFile(path.join(__dirname, '../views/cart.html'))
+
+  res.render('cart', {title: 'Cart'})
+
+
 })
 
 module.exports = router
