@@ -13,9 +13,8 @@
   </p>
   <section id="cart">
     <div class="cart-items">
-<!-- TODO: 👇Use a handlebars each helper to loop over cart items👇 -->
+      {{#each cartItems}}
         <div class="cart-item">
-          {{#each cartItems}}
     <!-- replace with inventoryId -->
           <a
             href="/product/"{{inventoryId}}
