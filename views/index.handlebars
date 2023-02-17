@@ -13,7 +13,7 @@
         {{#each this}}
         <a href="/product/:{{inventory.id}}" class="sale-item">
           <div class="item-img-container">
-            <img src={{inventory.image}} alt={{name}} />
+            <img src="/images/" + {{image}} alt="{{name}}" />
             <p>{{description}}</p>
           </div>
           <p>{{name}}</p>
