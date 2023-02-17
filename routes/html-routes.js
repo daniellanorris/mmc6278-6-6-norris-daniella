@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
   // TODO: Convert the response below to render a handlebars template
   //   res.sendFile(path.join(__dirname, '../views/index.html'))
   res.render('index', {rows: rows, cartCount: cartCount})
-
 })
 
 router.get('/product/:id', async (req, res) => {
@@ -25,6 +24,7 @@ router.get('/product/:id', async (req, res) => {
   res.render('product', {product: [product], cartCount: [cartCount]})
 
 })
+
 
 router.get('/cart', async (req, res) => {
   const [cartItems] = await db.query(
