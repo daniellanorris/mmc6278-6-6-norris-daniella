@@ -11,9 +11,9 @@
       <section id="saleItems">
         {{#if rows}}
         {{#each this}}
-        <a href="product/:{{id}}" class="sale-item">
+        <a href="/product/:{{inventory.id}}" class="sale-item">
           <div class="item-img-container">
-            <img src={{images}} alt={{name}}/>
+            <img src={{inventory.image}} alt={{name}} />
             <p>{{description}}</p>
           </div>
           <p>{{name}}</p>
