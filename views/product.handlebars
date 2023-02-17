@@ -9,10 +9,11 @@
 </header>
 <main>
   <section id="product-container">
+    {{#if product}}
     <!-- replace with product image and name -->
     <img src={{image}} alt={{name}}/>
     <!-- replace form action id # with product id -->
-      <form method="POST" action="/api/cart?inventoryId="{{inventoryId}}>
+      <form method="POST" action={{id}}>
         <!-- replace with product name -->
         <h2>{{name}}</h2>
         <!-- replace with product description -->
@@ -28,10 +29,11 @@
             type="number"
             min="1"
             value="1"
-            max="{{quantity}}" />
+            max={{quantity}} />
         </label>
         <button>Add to Cart</button>
       </form>
+    {{/if}}
   </section>
   <a href="/" id="returnToStore">Return to Store Page</a>
 </main>

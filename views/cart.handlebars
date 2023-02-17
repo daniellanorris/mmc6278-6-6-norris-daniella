@@ -13,7 +13,8 @@
   </p>
   <section id="cart">
     <div class="cart-items">
-      {{#each cartItems}}
+      {{#if cartItems}}
+      {{#each this}}
         <div class="cart-item">
     <!-- replace with inventoryId -->
           <a
@@ -33,16 +34,16 @@
                 Quantity
 <!-- replace with cart id, set max to inventoryQuantity, value to quantity -->
                 <input
-                  data-cart-id={{cart.id}}
+                  data-cart-id="{{id}}"
                   type="number"
                   min="0"
-                  max={{inventoryQuantity}}
-                  value={{quantity}} />
+                  max="{{inventoryQuantity}}"
+                  value="{{quantity}}" />
               </label>
               <!-- replace with cart id -->
               <button
                 class="remove-from-cart"
-                data-cart-id={{cart.id}}>
+                data-cart-id={{id}}>
                 Remove
               </button>
             </div>
@@ -50,6 +51,7 @@
             <p>{{calculatedPrice}}</p>
           </div>
           {{/each}}
+          {{/if}}
         </div>
         <hr />
 <!-- TODO: 👆Use a handlebars each helper to loop over cart items👆 -->
