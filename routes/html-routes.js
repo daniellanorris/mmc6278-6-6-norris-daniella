@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const db = require('../db')
 const path = require('path')
+const idPath = '/product/:id'
 
 router.get('/', async (req, res) => {
   const [rows] = await db.query('SELECT * FROM inventory;')
@@ -8,10 +9,11 @@ router.get('/', async (req, res) => {
 
   // TODO: Convert the response below to render a handlebars template
   //   res.sendFile(path.join(__dirname, '../views/index.html'))
-  res.render('index', {rows: rows, cartCount: cartCount})
+
+  res.render('index', {rows, cartCount})
 })
 
-router.get('/product/:id', async (req, res) => {
+router.get(idPath, async (req, res) => {
   const [[product]] = await db.query(
     'SELECT * FROM inventory WHERE id=?;',
     [req.params.id]
@@ -21,7 +23,7 @@ router.get('/product/:id', async (req, res) => {
   // TODO: Convert the response below to render a handlebars template
   //res.sendFile(path.join(__dirname, '../views/product.html'))
 
-  res.render('product', {product: [product], cartCount: [cartCount]})
+  res.render('product', {product, cartCount})
 
 })
 
@@ -48,7 +50,7 @@ router.get('/cart', async (req, res) => {
   // TODO: Convert the response below to render a handlebars template
   // res.sendFile(path.join(__dirname, '../views/cart.html'))
 
-  res.render('cart', {cartItems: cartItems, total})
+  res.render('cart', {cartItems, total})
 
 
 })

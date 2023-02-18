@@ -9,18 +9,16 @@
     <main>
       <h2>Items for Sale</h2>
       <section id="saleItems">
-        {{#if rows}}
-        {{#each this}}
-        <a href="/product/:{{id}}" class="sale-item">
+        {{#each rows}}
+        <a href= `/product/{{id}}` class="sale-item">
           <div class="item-img-container">
-            <img src="{{image}}" alt="{{name}}" />
+            <img src= `images/{{image}}` alt=`{{name}}` />
             <p>{{description}}</p>
           </div>
           <p>{{name}}</p>
           <p>{{price}}</p>
         </a>
         {{/each}}
-        {{/if}}
       </section>
     </main>
     <footer>
